@@ -183,10 +183,11 @@ class LedMatrixControl {
 
       // Display the buffer on to the group of LED matrix module(s)
       void updateDisplay();
-      
-      // clear the fame buffer
+
       void clearFrameBuffer();
+
       void clearUpperFrameBuffer();
+
       void clearLowerFrameBuffer();
 
       // puts the buffer on to the serial port so we can see what the LED matrix looks like. 

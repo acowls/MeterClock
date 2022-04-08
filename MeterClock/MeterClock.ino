@@ -652,7 +652,7 @@ void putWordInLowerBuffer(char *theWord)
 /**
  * Put a word in to the main display buffer
  */
-void putWordInBuffer(char *theWord)
+void putWordInBuffer(const char *theWord)
 {
   lc.clearFrameBuffer();
   int len = strlen(theWord);

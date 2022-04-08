@@ -21,7 +21,7 @@
 #define BUFFER_LOWER 2
 
 #include <stdarg.h>
-void printout(char *fmt, ...) {
+void printout(const char *fmt, ...) {
   #if 0
   char buf[128]; // resulting string limited to 128 chars
   va_list args;
