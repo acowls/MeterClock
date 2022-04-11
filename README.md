@@ -1,8 +1,8 @@
 # MeterClock
 
-A clock displaying hour and minutes on two analog meters. Powered by Arduino and an RTC.
+A clock displaying hour and minutes on two analog meters with a red LED matrix for time and date. Powered by an AVR Arduino and an RTC.
 
-Insides of Meter Clock with room for Arduino Nano, DS3231 module, connectors for LED matrix 32x8 using MAX7221 and debouncing connection for two switches and one encoder.
+![final shot](./as-built/final-double-shot.jpeg)
 
 ## Parts List
 
@@ -15,8 +15,8 @@ Insides of Meter Clock with room for Arduino Nano, DS3231 module, connectors for
 + PCB inner meter panel x2 (one for hours, one for minutes)
 + Functional PCB
 + Push button
-+ Rotary Encoder
-+ .
++ Rotary Encoder, with knob
++ various small screws for mounting
 
 ### Tools Required
 
@@ -25,6 +25,7 @@ Insides of Meter Clock with room for Arduino Nano, DS3231 module, connectors for
 + Saw for cutting timber
 + Screwdrivers
 + Hot Glue Gun
++ Drill
 
 
 ## Design
@@ -47,17 +48,37 @@ Using 7H by 5W characters the 32x8 LED matrix provides enough space for the disp
 
 I hit the limits of functionality that I could pack inside of the Arduino Nano ( an ATMega168 with 16k storage). With two buttons and a rotary dial plus the outputs of the 32x8 matrix and the two analgoue meters there is a fair bit more functionality I wanted to write but simply ran out of bytes of storage in the Arduino Nano to do so. Any improvements should look at using a controller with more storage space. 
 
+### Schematic
+
+The circuit is built around the Arduino Nano with debouncing circuitry for the mechanical inputs of the buttons & encoder. There are interfaces to the LED matrix module and the RTC module. 
+
+The meters operate through a 2.7k ohm resister to ground and two pins on the Arudino supply the analog output (aka a variable voltage) to move the needles from 0 to 12 for the hours and 0 to 60 for the minutes.
+
+![schematic](./as-built/schematic.png)
+
 ## Software
 
 ### Library List
 
 + [Notched Shaft Encoder v1.0.0](https://github.com/lesterlo/Notched-Shaft-Encoder) - Monitor the postion and clickable button status from a notched shaft encoder
-+ [RTCLib by NeiroNx v1.6] (https://github.com/NeiroNx/RTCLib) - A library that makes interfacing DS1302, DS1307, DS3231, PCF8583, PCF8563, RTC_Millis Real Time Clock modules easy.
++ [RTCLib by NeiroNx v1.6](https://github.com/NeiroNx/RTCLib) - A library that makes interfacing DS1302, DS1307, DS3231, PCF8583, PCF8563, RTC_Millis Real Time Clock modules easy.
 + [AceButton v1.6.1](https://github.com/bxparks/AceButton) - An adjustable, compact, event-driven button library that handles debouncing and dispatches events to a user-defined event handler.
 
 ## As-Built
 
 ### External
+
+Inside of the Meter Clock there is room for Arduino Nano, DS3231 module, connectors for LED matrix 32x8 using MAX7221 and debouncing connection for two switches and one encoder.
+
+![inside of the meter clock](./as-built/enclosure-inside-1.jpeg)
+
+### PCB Mainboard 
+
+This is the PCB inside of the meter clock. It has a spot to mount the Arduino Nano and the RTC. The remainder of the board has connectors to the display (led matrix) and the RC filtered inputs (encoder and push button). 
+
+![mainboard with adruino nano mounted](./as-built/mainboard-medium.jpeg)
+
+![mainboard](./as-built/mainboard-render.png)
 
 ### PCB Inside Meter
 
@@ -70,10 +91,4 @@ MeterClockInner - The inside of the analogue meters that shows graduations from 
 
 ### PCB Front Face
 
-
-
-
-
-This is the PCB inside of the meter clock. It has a spot to mount the Arduino Nano and the RTC. The remainder of the board has connectors to the display (led matrix) and the RC filtered inputs (encoder and push button). 
-
-![mainboard](./as-built/mainboard-render.png)
+to do
